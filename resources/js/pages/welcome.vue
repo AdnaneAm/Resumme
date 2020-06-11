@@ -20,9 +20,10 @@
       <div class="title mb-4">
         {{ title }}
       </div>
-
       <div class="links">
-        <a href="https://github.com/cretueusebiu/laravel-vue-spa">github.com/cretueusebiu/laravel-vue-spa</a>
+        <router-link :to="{ name: 'resumes.index' }">
+          Resumes
+        </router-link>
       </div>
     </div>
   </div>
@@ -39,7 +40,7 @@ export default {
   },
 
   data: () => ({
-    title: window.config.appName
+    title: 'Hello there'
   }),
 
   computed: mapGetters({

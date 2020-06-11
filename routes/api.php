@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['middleware'=>'admin:api'],function(){
+});
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', 'Auth\LoginController@logout');
-
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
@@ -38,3 +39,17 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
 });
+
+// Resumes
+Route::get('/resumes','ResumeController@index');
+Route::post('/resumes/create','ResumeController@store');
+Route::get('/resumes/{id}','ResumeController@show');
+Route::put('/resumes/{id}','ResumeController@update');
+
+// Orders
+Route::get('/orders','OrderController@index');
+Route::post('/orders/create','OrderController@store');
+Route::get('/orders/{id}','OrderController@show')->where('id','[0-9]+');
+Route::get('/orders/user/{id}','OrderController@userOrders');
+
+

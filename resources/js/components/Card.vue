@@ -4,7 +4,7 @@
       {{ title }}
     </div>
 
-    <div class="card-body">
+    <div class="card-body" :id="iden">
       <slot />
     </div>
   </div>
@@ -15,7 +15,13 @@ export default {
   name: 'Card',
 
   props: {
-    title: { type: String, default: null }
+    title: { type: String, default: null },
+    iden: {type:String, defualt:"null"}
   }
 }
 </script>
+<style scoped>
+  #education{
+    display: flex;
+  }
+</style>
